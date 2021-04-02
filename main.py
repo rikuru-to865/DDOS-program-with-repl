@@ -36,6 +36,8 @@ async def ddos(ctx,arg,port):
 async def stop(ctx):
     await ctx.send("stopped the attack.")
     hammer.flag = False
+    udpflood.flag = False
+
 
 
 
