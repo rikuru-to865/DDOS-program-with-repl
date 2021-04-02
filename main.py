@@ -37,7 +37,9 @@ async def stop(ctx):
     await ctx.send("stopped the attack.")
     hammer.flag = False
 
-@bot.commnad()
+
+
+@bot.command()
 async def udp(ctx,ip,port,connection,thread):
     if not ip:
         await ctx.send("no ip!")
@@ -46,7 +48,7 @@ async def udp(ctx,ip,port,connection,thread):
     if not connect:
         await ctx.send("choose ackets per one connection!")
     if not thread:
-    await ctx.send("no thread!")
+      await ctx.send("no thread!")
 
     udpflood.ip = ip
     udpflood.port = port
@@ -59,7 +61,9 @@ async def udp(ctx,ip,port,connection,thread):
     th.start()
 
 
-@bot.commnad()
+
+
+@bot.command()
 async def tcp(ctx,ip,port,connection,thread):
     if not ip:
         await ctx.send("no ip!")
@@ -68,7 +72,7 @@ async def tcp(ctx,ip,port,connection,thread):
     if not connect:
         await ctx.send("choose ackets per one connection!")
     if not thread:
-    await ctx.send("no thread!")
+      await ctx.send("no thread!")
 
     udpflood.ip = ip
     udpflood.port = port
