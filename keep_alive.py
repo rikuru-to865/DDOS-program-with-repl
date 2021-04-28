@@ -22,7 +22,7 @@ def slowhttp():
 	return "successful"
 
 
-@app.route('/attack',methods=["POST"])
+@app.route('/http',methods=["POST"])
 def attack():
 
 	info = json.loads(request.get_data())
